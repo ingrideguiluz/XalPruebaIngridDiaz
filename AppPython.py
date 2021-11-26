@@ -1,7 +1,5 @@
 import requests
-from requests.api import request
 from requests.models import Response
-from requests.sessions import _Data
 
 url="https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow"
 
@@ -25,8 +23,9 @@ def valor_de_respuestas():
             contador_true = contador_true + 1
         elif respuestas == False:
             contador_false = contador_false + 1
-    print(f"numero de respuestas contestadas: {contador_true}")
-    print|(f"numero de respuestas no contestadas: {contador_false}")   
+            
+    print(f"Numero de respuestas contestadas: {contador_true}")
+    print|(f"Numero de respuestas no contestadas: {contador_false}")   
 
 #3. Obtener la respuesta con mayor owners
 def mayor_owners():
@@ -44,23 +43,35 @@ def mayor_owners():
 
 #4. Obtener la respuesta con menor número de 
 def menor_numero_vistas():
-    response = request.get(url)
+    response = requests.get(url)
     data: dict = response.json()
     menor_vista = []
     for element in data["items"]:
         menor = element["view_count"]
         menor_vista.append(menor)
+
     print(f"Respuesta con menor numero de vistas {min(menor_vista)}")
 
 #5. Obtener la respuesta más vieja y más actual
 def respuestas():
-    response = request.get(url)
+    response = requests.get(url)
     data: dict = response.json()
     respuestas = []
     for element in data["items"]:
         valor_respuesta = element["answer_count"]
         respuestas.append(valor_respuesta)
+
     #Imprimir la respuesta más vieja
     print(f"Respuesta mas vieja {min(respuestas)}") 
     #Imprimir la respuesta mas reciente
     print(f"Respuesta mas reciente {max(respuestas)}")   
+
+def rum():
+    muestra_url(url)
+    valor_de_respuestas()
+    mayor_owners()
+    menor_numero_vistas()
+    respuestas()
+
+if __name__ == '__main__':
+    rum()
