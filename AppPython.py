@@ -8,7 +8,7 @@ def muestra_url(url):
     response = requests.get(url)
     respuesta = response.json()
     #print('INSUMO -->', respuesta)
-    return respuesta #Imprime el insumo json
+    #return respuesta #Imprime el insumo json
 
 #2. Obtener el número de respuestas contestadas y no contestadas
 def valor_de_respuestas():
@@ -23,9 +23,9 @@ def valor_de_respuestas():
             contador_true = contador_true + 1
         elif respuestas == False:
             contador_false = contador_false + 1
-            
-    print(f"Numero de respuestas contestadas: {contador_true}")
-    print|(f"Numero de respuestas no contestadas: {contador_false}")   
+
+    print(f"Número de respuestas contestadas: {contador_true}")
+    print(f"Número de respuestas no contestadas: {contador_false}")   
 
 #3. Obtener la respuesta con mayor owners
 def mayor_owners():
@@ -50,7 +50,7 @@ def menor_numero_vistas():
         menor = element["view_count"]
         menor_vista.append(menor)
 
-    print(f"Respuesta con menor numero de vistas {min(menor_vista)}")
+    print(f"Respuesta con menor número de vistas: {min(menor_vista)}")
 
 #5. Obtener la respuesta más vieja y más actual
 def respuestas():
@@ -58,20 +58,21 @@ def respuestas():
     data: dict = response.json()
     respuestas = []
     for element in data["items"]:
-        valor_respuesta = element["answer_count"]
+        valor_respuesta = element["creation_date"]
         respuestas.append(valor_respuesta)
 
     #Imprimir la respuesta más vieja
-    print(f"Respuesta mas vieja {min(respuestas)}") 
+    print(f"La fecha de la respuesta más vieja es: {max(respuestas)}") 
     #Imprimir la respuesta mas reciente
-    print(f"Respuesta mas reciente {max(respuestas)}")   
+    print(f"La fecha de la respuesta más reciente es: {min(respuestas)}")   
 
-def rum():
+def run():
     muestra_url(url)
     valor_de_respuestas()
     mayor_owners()
     menor_numero_vistas()
     respuestas()
 
+        
 if __name__ == '__main__':
-    rum()
+    run()
