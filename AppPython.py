@@ -1,4 +1,5 @@
 import requests
+from requests.api import request
 from requests.models import Response
 from requests.sessions import _Data
 
@@ -41,4 +42,14 @@ def mayor_owners():
 
     print(f"Respuesta con mayor owner: {max(elementos_maximos)}") 
 
-    
+#4. Obtener la respuesta con menor número de 
+def menor_numero_vistas():
+    response = request.get(url)
+    data: dict = response.json()
+    menor_vista = []
+    for element in data["items"]:
+        menor = element["view_count"]
+        menor_vista.append(menor)
+    print(f"Respuesta con menor numero de vistas {min(menor_vista)}")
+
+
