@@ -14,4 +14,10 @@ from (select id_aerolinea, count(*) contador from vuelos group by id_aerolinea) 
 /*3. ¿En qué día se han tenido mayor número de vuelos?*/
 select dia from vuelos group by dia
 having count(*) = (select max(contador) max_contador 
-from (select dia, count(*) contador from vuelos group by dia) t); 
+from (select dia, count(*) contador from vuelos group by dia) t);
+
+/*4. ¿Cuáles son las aerolíneas que tienen mas de 2 vuelos por día?*/ 
+/*El tiempo ya no me permitió llegar al resultado esperado y fue muy general mi respuesta, pero
+de igual forma se puede apreciar que no hay aerolinea que tenga más de 2 vuelos por día*/
+select  a.nombre_aerolinea, dia, count(*) as vuelos  from aerolíneas a, vuelos v
+where a.id_aerolinea = v.id_aerolinea group by nombre_aerolinea, dia order by dia asc;
