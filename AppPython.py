@@ -8,7 +8,7 @@ def muestra_url(url):
     response = requests.get(url)
     respuesta = response.json()
     #print('INSUMO -->', respuesta)
-    #return respuesta #Imprime el insumo json
+    return respuesta #Imprime el insumo json
 
 #2. Obtener el número de respuestas contestadas y no contestadas
 def valor_de_respuestas():
