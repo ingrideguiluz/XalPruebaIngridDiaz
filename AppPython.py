@@ -52,4 +52,15 @@ def menor_numero_vistas():
         menor_vista.append(menor)
     print(f"Respuesta con menor numero de vistas {min(menor_vista)}")
 
-
+#5. Obtener la respuesta más vieja y más actual
+def respuestas():
+    response = request.get(url)
+    data: dict = response.json()
+    respuestas = []
+    for element in data["items"]:
+        valor_respuesta = element["answer_count"]
+        respuestas.append(valor_respuesta)
+    #Imprimir la respuesta más vieja
+    print(f"Respuesta mas vieja {min(respuestas)}") 
+    #Imprimir la respuesta mas reciente
+    print(f"Respuesta mas reciente {max(respuestas)}")   
