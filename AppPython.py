@@ -33,7 +33,12 @@ def mayor_owners():
     data: dict = response.json()
     elementos_maximos = []
     for element in data["items"]:
-        maximos = element["owner"]["reputation"]
+        if("owner" in element and "user_id" in element["owner"] and element["owner"]["user_id"] is not None): 
+            maximos = element["owner"]["user_id"]
+        else:
+            maximos = 0
         elementos_maximos.append(maximos) 
 
-    print(f"Respuesta con mayor owner: {max(elementos_maximos)}")     
+    print(f"Respuesta con mayor owner: {max(elementos_maximos)}") 
+
+    
