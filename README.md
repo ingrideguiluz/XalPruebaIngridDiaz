@@ -21,7 +21,7 @@ conforman las diferentes funcionalidades de este.
 Descripción
 =====================
 AppPython nos permite realizar el consumo de un enlace(archivo JSON) y obtener información importante que da respuesta a ciertas preguntas.
-Index es una sencilla pagina web que nos muestra las preguntas del reto y sus respuesta mediante capturas de pantalla.
+Index es una sencilla pagina web que nos muestra las preguntas del reto y sus respuestas mediante capturas de pantalla.
 
 Explicación de carpetas de código
 =====================
